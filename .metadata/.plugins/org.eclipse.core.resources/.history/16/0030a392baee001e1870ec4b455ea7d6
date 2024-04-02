@@ -1,0 +1,5 @@
+package com.example.microservice1.dto;
+
+public class EmployeeResponseDTO {
+
+}

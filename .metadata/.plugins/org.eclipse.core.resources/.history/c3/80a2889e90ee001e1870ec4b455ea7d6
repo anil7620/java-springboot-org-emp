@@ -1,0 +1,14 @@
+spring.application.name=microservice1
+
+server.port=9090
+
+#SQL Properties
+spring.datasource.url=jdbc:mysql://localhost:3306/microservice1?allowLoadLocalInfile=true
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.jpa.database-platform = org.hibernate.dialect.MySQL8Dialect
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto = update
+spring.jpa.defer-datasource-initialization=true
+#spring.jpa.show-sql = true

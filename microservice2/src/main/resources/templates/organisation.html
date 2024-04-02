@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Organisation Management</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    <h1>Organisation Management</h1>
+    
+    <div id="organisationForm">
+        <h2>Add/Update Organisation</h2>
+        <form th:action="@{/organisation}" th:method="post" th:object="${organisation}">
+            <input type="hidden" th:field="*{id}">
+            <label for="name">Name:</label>
+            <input type="text" th:field="*{name}" required>
+            <label for="netValue">Net Value:</label>
+            <input type="number" th:field="*{netValue}" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    <div id="organisationList">
+        <h2>Organisations</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Net Value</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="organisation : ${organisations}">
+                    <td th:text="${organisation.id}">ID</td>
+                    <td th:text="${organisation.name}">Name</td>
+                    <td th:text="${organisation.netValue}">Net Value</td>
+                    <td>
+                        <!-- Add action buttons here -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+package com.example.microservice1.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.microservice1.dto.EmployeeDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService{
+
+	@Autowired
+	private ObjectMapper objectMapper;
+	
+	@Override
+	public void createEmployee(EmployeeDTO employee) {
+		Employee employee = 
+		
+	}
+
+}

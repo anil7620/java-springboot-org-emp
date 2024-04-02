@@ -1,0 +1,6 @@
+package com.example.microservice1.model;
+
+@Entity
+public class Employee {
+
+}

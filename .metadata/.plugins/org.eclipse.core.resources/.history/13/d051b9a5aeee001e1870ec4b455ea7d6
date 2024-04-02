@@ -1,0 +1,9 @@
+package com.example.microservice2.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.microservice1.model.Employee;
+
+public interface OrganisationRepository extends JpaRepository<Employee, Integer>{
+
+}

@@ -1,0 +1,13 @@
+package com.example.microservice1.dto;
+
+public class EmployeeDTO {
+	
+	private String name;
+
+	private String address;
+	
+	private String designation;
+
+	private int organisationId;
+
+}

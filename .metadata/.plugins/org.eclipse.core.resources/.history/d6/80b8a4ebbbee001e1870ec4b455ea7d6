@@ -1,0 +1,48 @@
+package com.example.microservice1.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import com.example.microservice1.dto.EmployeeDTO;
+import com.example.microservice1.dto.EmployeeResponseDTO;
+import com.example.microservice1.model.Employee;
+import com.example.microservice1.repository.EmployeeRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
+	private final ObjectMapper objectMapper;
+
+	private final WebClient webClient;
+
+	public EmployeeServiceImpl(WebClient.Builder webClientBuilder, DiscoveryClient discoveryClient, ObjectMapper objectMapper) {
+		// Retrieve the URL of the organization service using Eureka
+		String organizationServiceUrl = discoveryClient.getInstances("organization-service").stream().findFirst()
+				.map(instance -> instance.getUri().toString())
+				.orElseThrow(() -> new RuntimeException("Unable to retrieve organization service URL from Eureka"));
+
+		this.webClient = webClientBuilder.baseUrl(organizationServiceUrl).build();
+        this.objectMapper = objectMapper;
+	}
+
+	@Override
+	public void createEmployee(EmployeeDTO employeeRequest) throws JsonProcessingException {
+		String jsonRequest = objectMapper.writeValueAsString(employeeRequest);
+		Employee employee = objectMapper.readValue(jsonRequest, Employee.class);
+		employeeRepository.save(employee);
+	}
+
+	@Override
+	public EmployeeResponseDTO getEmployeeById(int employeeId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

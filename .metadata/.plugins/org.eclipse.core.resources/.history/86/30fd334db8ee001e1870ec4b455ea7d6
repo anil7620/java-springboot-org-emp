@@ -1,0 +1,37 @@
+package com.example.microservice2.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.microservice2.dto.OrganisationDTO;
+import com.example.microservice2.service.OrganisationService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+@RestController
+public class OrganisationController {
+	
+	private final OrganisationService organisationService;
+
+    OrganisationController(OrganisationService organisationService) {
+        this.organisationService = organisationService;
+    }
+	
+	@PostMapping("/organisation")
+	private ResponseEntity<OrganisationDTO>addOrganisation(@RequestBody OrganisationDTO organisationRequest) throws JsonProcessingException {
+		organisationService.createOrganisation(organisationRequest);
+		return new ResponseEntity<>(organisationRequest, HttpStatus.OK);
+		
+	}
+	
+	@GetMapping("/organisation/{id}")
+	private ResponseEntity<OrganisationDTO>getOrganisation(@PathVariable("id") int organisationId){
+		organisationService.getOrganisationById(organisationId);
+	}
+	
+
+}

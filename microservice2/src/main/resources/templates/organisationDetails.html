@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Organisation Details</title>
+</head>
+<body>
+<h2>Organisation Details</h2>
+<div>
+    <p><strong>Name:</strong> <span th:text="${organisation.name}"></span></p>
+    <p><strong>Net Value:</strong> <span th:text="${organisation.netValue}"></span></p>
+</div>
+<a href="/organisations">Back to list</a>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Organisation Operations</title>
+</head>
+<body>
+    <h2>Organisation Details</h2>
+    <form onsubmit="event.preventDefault(); redirectToOrganisation()">
+        <label for="getOrgId">Enter Organisation ID:</label>
+        <input type="text" id="getOrgId" required>
+        <button type="submit">Get Organisation</button>
+    </form>
+
+    <h2>Delete Organisation</h2>
+    <form onsubmit="event.preventDefault(); deleteOrganisation()">
+        <label for="deleteOrgId">Enter Organisation ID to Delete:</label>
+        <input type="text" id="deleteOrgId" required>
+        <button type="submit">Delete Organisation</button>
+    </form>
+</body>
+<script>
+    function redirectToOrganisation() {
+        var id = document.getElementById('getOrgId').value;
+        window.location.href = '/organisation/' + id;
+    }
+
+    function deleteOrganisation() {
+        var id = document.getElementById('deleteOrgId').value;
+        window.location.href = '/organisation/delete/' + id;
+    }
+</script>
+</html>

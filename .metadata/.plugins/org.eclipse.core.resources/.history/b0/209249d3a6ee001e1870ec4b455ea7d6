@@ -1,0 +1,15 @@
+package com.example.microservice1.controller;
+
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class EmployeeController {
+	
+	@PostMapping("/employee")
+	private createEmployee(@RequestBody EmployeeDTO employee) {
+		
+	}
+	
+
+}

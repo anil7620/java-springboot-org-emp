@@ -1,0 +1,6 @@
+package com.example.microservice1.service;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService{
+
+}

@@ -1,0 +1,19 @@
+spring.application.name=configservice
+
+
+server.port=8081
+
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+eureka.client.register-with-eureka=true
+
+spring.cloud.gateway.discovery.locator.enabled=true
+
+# candidat microservice
+spring.cloud.gateway.routes[0].id=ms_candidat
+spring.cloud.gateway.routes[0].uri=http://localhost:8082
+spring.cloud.gateway.routes[0].predicates[0]=Path=/candidat/**
+
+# job microservice
+spring.cloud.gateway.routes[1].id=ms_job
+spring.cloud.gateway.routes[1].uri=http://localhost:8083
+spring.cloud.gateway.routes[1].predicates[0]=Path=/api/job/**

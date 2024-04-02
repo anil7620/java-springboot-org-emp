@@ -1,0 +1,16 @@
+package com.example.microservice2.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.microservice2.dto.OrganisationDTO;
+
+@Service
+public class OrganisationServiceImpl implements OrganisationService{
+
+	@Override
+	public void createOrganisation(OrganisationDTO organisationRequest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

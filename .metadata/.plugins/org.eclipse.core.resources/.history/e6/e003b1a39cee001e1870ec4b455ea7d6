@@ -1,0 +1,6 @@
+package com.example.microservice2.model;
+
+@Entity
+public class Organisation {
+
+}

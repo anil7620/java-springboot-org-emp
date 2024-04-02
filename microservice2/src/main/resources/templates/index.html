@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        p {
+            font-size: 16px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Welcome to the Organisation Management System</h1>
+<p th:if="${message}" th:text="${message}">This is the index page. The following functionalities are available:</p>
+<ul>
+    <li><a href="/organisation">Add a new Organisation</a></li>
+    <li><a href="/organisations">View Organisations</a></li>
+    <li><a href="/organisation/operations">Operations</a></li>
+</ul>
+</body>
+</html>

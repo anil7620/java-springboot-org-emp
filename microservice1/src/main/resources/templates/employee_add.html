@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Employee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 100px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        div {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box; /* Adds padding inside the box */
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add New Employee</h1>
+    <form th:action="@{/employee}" th:object="${employee}" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required />
+        </div>
+
+        <div>
+            <label for="address">Address:</label>
+            <input type="text" id="address" th:field="*{address}" required />
+        </div>
+
+        <div>
+            <label for="designation">Designation:</label>
+            <input type="text" id="designation" th:field="*{designation}" required />
+        </div>
+
+        <div>
+            <label for="organisationId">Organisation ID:</label>
+            <input type="number" id="organisationId" th:field="*{organisationId}" required />
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

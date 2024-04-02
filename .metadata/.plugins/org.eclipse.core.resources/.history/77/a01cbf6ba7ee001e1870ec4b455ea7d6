@@ -1,0 +1,9 @@
+package com.example.microservice1.service;
+
+import com.example.microservice1.dto.EmployeeDTO;
+
+public interface EmployeeService {
+
+	void createEmployee(EmployeeDTO employee);
+
+}

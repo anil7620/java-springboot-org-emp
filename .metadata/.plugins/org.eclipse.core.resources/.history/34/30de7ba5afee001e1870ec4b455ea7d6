@@ -1,0 +1,9 @@
+package com.example.microservice2.service;
+
+import com.example.microservice2.dto.OrganisationDTO;
+
+public interface OrganisationService {
+
+	void createOrganisation(OrganisationDTO organisationRequest);
+
+}

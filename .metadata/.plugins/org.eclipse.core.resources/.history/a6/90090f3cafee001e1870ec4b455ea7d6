@@ -1,0 +1,28 @@
+package com.example.microservice2.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.microservice2.dto.OrganisationDTO;
+import com.example.microservice2.service.OrganisationService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+@RestController
+public class OrganisationController {
+	
+	@Autowired
+	private OrganisationService organisationService;
+	
+	@PostMapping("/organisation")
+	private ResponseEntity<OrganisationDTO>addOrganisation(@RequestBody OrganisationDTO organisationRequest) throws JsonProcessingException {
+		organisationService.createOrganisation(employee);
+		return new ResponseEntity<>(employee, HttpStatus.OK);
+		
+	}
+	
+
+}

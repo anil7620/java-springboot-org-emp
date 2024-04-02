@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            padding: 30px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            background: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        span {
+            display: block;
+            margin-bottom: 5px;
+        }
+        a {
+            display: inline-block;
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .edit, .delete {
+            font-size: 0.8em;
+            padding: 5px 10px;
+            margin-left: 5px;
+        }
+        .edit {
+            background-color: #ffc107;
+        }
+        .delete {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employees List</h1>
+    <div th:if="${!employees.isEmpty()}">
+        <ul>
+            <li th:each="employee : ${employees}">
+                Name: <span th:text="${employee.name}"></span>
+                Designation: <span th:text="${employee.designation}"></span>
+                Address: <span th:text="${employee.address}"></span> 
+                Organisation ID: <span th:text="${employee.organisationId}"></span>
+                
+                <a th:href="@{/employee/edit/{id}(id=${employee.id})}" class="edit">Edit</a>
+                <a th:href="@{/employee/delete/{id}(id=${employee.id})}" class="delete" onclick="return confirm('Are you sure?')">Delete</a>
+            </li>
+        </ul>
+    </div>
+    <div th:if="${employees.isEmpty()}">
+        <p>No employees found.</p>
+    </div>
+    <a href="/employee/new">Add New Employee</a>
+</body>
+</html>

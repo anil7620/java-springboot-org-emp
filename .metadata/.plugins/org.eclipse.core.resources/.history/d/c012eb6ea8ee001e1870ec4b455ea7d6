@@ -1,0 +1,16 @@
+package com.example.microservice1.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.microservice1.dto.EmployeeDTO;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService{
+
+	@Override
+	public void createEmployee(EmployeeDTO employee) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

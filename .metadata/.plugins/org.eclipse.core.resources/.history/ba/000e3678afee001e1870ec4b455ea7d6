@@ -1,0 +1,28 @@
+package com.example.microservice2.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.microservice2.dto.OrganisationDTO;
+import com.example.microservice2.repository.OrganisationRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Service
+public class OrganisationServiceImpl implements OrganisationService{
+	
+	@Autowired
+	private OrganisationRepository organisationRepository;
+
+	private final ObjectMapper objectMapper;
+
+    public OrganisationServiceImpl(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
+	@Override
+	public void createOrganisation(OrganisationDTO organisationRequest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

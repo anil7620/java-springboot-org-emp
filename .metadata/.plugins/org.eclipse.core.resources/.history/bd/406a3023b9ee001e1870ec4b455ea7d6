@@ -1,0 +1,45 @@
+package com.example.microservice2.service;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.example.microservice2.dto.OrganisationDTO;
+import com.example.microservice2.model.Organisation;
+import com.example.microservice2.repository.OrganisationRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Service
+public class OrganisationServiceImpl implements OrganisationService{
+	
+	private final OrganisationRepository organisationRepository;
+
+	private final ObjectMapper objectMapper;
+
+    public OrganisationServiceImpl(ObjectMapper objectMapper, OrganisationRepository organisationRepository) {
+        this.objectMapper = objectMapper;
+        this.organisationRepository = organisationRepository;
+    }
+
+	@Override
+	public void createOrganisation(OrganisationDTO organisationRequest) throws JsonMappingException, JsonProcessingException {
+		String jsonRequest = objectMapper.writeValueAsString(organisationRequest);
+		Organisation organisation = objectMapper.readValue(jsonRequest, Organisation.class);
+		organisationRepository.save(organisation);
+		
+	}
+
+	@Override
+	public OrganisationDTO getOrganisationById(int organisationId) {
+		Optional<Organisation> organisation = organisationRepository.findById(organisationId);
+		if(organisation.isPresent()) {
+			String jsonResponse = objectMapper.writeValueAsString(organisation);
+			OrganisationDTO response = objectMapper.readValue(jsonResponse, OrganisationDTO.class);
+			return response;
+		}
+		return null;
+	}
+
+}

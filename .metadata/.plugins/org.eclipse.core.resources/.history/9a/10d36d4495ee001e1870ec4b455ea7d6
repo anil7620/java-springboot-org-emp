@@ -1,0 +1,11 @@
+package com.example.microservice1.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+@Entity
+public class Employee {
+	@GeneratedValue(GenerationType.AUTO)
+
+}

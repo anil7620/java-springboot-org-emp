@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Organisations</title>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #007bff;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            margin-top: 5px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        span {
+            font-weight: bold;
+        }
+        p {
+            font-size: 16px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 3px #999;
+            margin: 10px 2px;
+        }
+        .button:hover {background-color: #0056a4}
+        .button:active {
+            background-color: #0056a4;
+            box-shadow: 0 2px #666;
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+<h2>Organisations List</h2>
+<div th:if="${!organisations.isEmpty()}">
+    <ul>
+        <li th:each="organisation : ${organisations}">
+            Name: <span th:text="${organisation.name}">Org Name</span>,
+            Net Value: <span th:text="${organisation.netValue}">Value</span>
+        </li>
+    </ul>
+</div>
+<div th:if="${organisations.isEmpty()}">
+    <p>No organisations found.</p>
+</div>
+<a href="/" class="button">Go Home</a>
+<a href="/organisation" class="button">Add Organisation</a>
+
+</body>
+</html>

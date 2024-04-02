@@ -1,0 +1,13 @@
+package com.example.microservice2.service;
+
+import com.example.microservice2.dto.OrganisationDTO;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+
+public interface OrganisationService {
+
+	void createOrganisation(OrganisationDTO organisationRequest) throws JsonMappingException, JsonProcessingException;
+
+	OrganisationDTO getOrganisationById(int organisationId);
+
+}
